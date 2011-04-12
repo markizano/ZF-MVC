@@ -1,0 +1,25 @@
+
+SetEnv ENVIRONMENT dev
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^(.*)\.(bak|old|tmp)$ - [NC,F,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_URI} /favicon.ico
+RewriteRule ^.*$ - [L]
+
+RewriteCond {REQUEST_URI} !^/ajax(.*)$
+RewriteCond %{REQUEST_FILENAME} !\.(js|ico|txt|gif|jpg|png|css)$
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+
+# ETags don't work in multi-server environments, don't use them
+# @see http://developer.yahoo.com/performance/rules.html#etags
+#FileETag none
+
+ErrorDocument 404 /index.php?/default/error/error/code/404
+
+

@@ -1,0 +1,30 @@
+<?php
+$this->headTitle()->set('Full ZF Project');
+print $this->doctype();
+?> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- to correct the unsightly Flash of Unstyled Content. http://www.bluerobot.com/web/css/fouc.asp -->
+        <script type="text/javascript"> </script>
+<?php
+    $this->headLink()
+        ->appendStylesheet('default.css');
+
+    $this->headScript()
+        ->appendFile('default.js');
+
+    print $this->headTitle() . chr(10) . $this->headLink() . chr(10) . $this->headScript();
+?> 
+    </head>
+    <body>
+        <div id="PAGE">
+            <h1>Administration Page</h1>
+            <div class="main-content">
+                <?php print $this->layout()->content; ?> 
+            </div>
+        </div>
+    </body>
+</html>
+
+
